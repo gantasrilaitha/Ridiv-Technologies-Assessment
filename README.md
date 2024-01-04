@@ -1,4 +1,4 @@
 # Ridiv-Technologies-Assessment
 Assessment for Python Django Developer Intern
 
-my_django_app/ridiv -->contains all the files 
+click on my_django_app/ridiv ,that contains all the required files 
