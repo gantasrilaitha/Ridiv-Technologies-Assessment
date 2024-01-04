@@ -1,0 +1,54 @@
+<!-- ridiv/templates/result.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Search Results</title>
+</head>
+<body>
+    <h1>Search Results</h1>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Invoice ID</th>
+                <th>Date</th>
+                <th>Customer Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>{{ invoice.id }}</td>
+                <td>{{ invoice.date }}</td>
+                <td>{{ invoice.customer_name }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <br>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Detail ID</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for detail in details %}
+                <tr>
+                    <td>{{ detail.id }}</td>
+                    <td>{{ detail.description }}</td>
+                    <td>{{ detail.quantity }}</td>
+                    <td>{{ detail.unit_price }}</td>
+                    <td>{{ detail.price }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+</body>
+</html>

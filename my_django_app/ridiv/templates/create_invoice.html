@@ -1,0 +1,19 @@
+<!-- ridiv/templates/create_invoice.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Create Invoice</title>
+</head>
+<body>
+    <h1>Create Invoice</h1>
+
+    <form method="post" action="{% url 'create-invoice' %}">
+        {% csrf_token %}
+        {{ invoice_form.as_p }}
+        {{ detail_form.as_p }}
+        <input type="submit" value="Create Invoice">
+    </form>
+
+</body>
+</html>

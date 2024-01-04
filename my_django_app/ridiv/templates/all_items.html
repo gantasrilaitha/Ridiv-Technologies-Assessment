@@ -1,0 +1,79 @@
+<!-- ridiv/templates/all_items.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Invoice List</title>
+</head>
+<body>
+    <h1>Invoice List</h1>
+    
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Invoice ID</th>
+                <th>Date</th>
+                <th>Customer Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for invoice in invoices %}
+            <tr>
+                <td>{{ invoice.id }}</td>
+                <td>{{ invoice.date }}</td>
+                <td>{{ invoice.customer_name }}</td>
+
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <br>
+
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Detail ID</th>
+                <th>Invoice ID</th>
+                <th>Description</th>
+                <th>Quantity</th>
+                <th>Unit Price</th>
+                <th>Price</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for detail in details %}
+                <tr>
+                    <td>{{ detail.id }}</td>
+                    <td>{{ detail.invoice.id }}</td>
+                    <td>{{ detail.description }}</td>
+                    <td>{{ detail.quantity }}</td>
+                    <td>{{ detail.unit_price }}</td>
+                    <td>{{ detail.price }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+    <h1>Search Invoice Details</h1>
+    <form method="post" action="{% url 'get-invoice-details' %}">
+        {% csrf_token %}
+        <label id="iid">Enter Invoice ID:</label>
+        <input type="text" id="iid" name="invoice_id" required>
+        <input type="submit" value="Search">
+    </form>
+    
+    <h1>Create Invoice</h1>
+
+    <a href="{% url 'create-invoice' %}"><button>Create New Invoice</button></a>
+
+    <h1>Update Invoice</h1>
+    <a href="{% url 'update-invoice-detail' %}"><button>Update Invoice Detail</button></a>
+
+    <h1>Delete Invoice</h1>
+    <a href="{% url 'delete-invoice' %}"><button>Delete Invoice</button></a>
+
+</body>
+</html>
